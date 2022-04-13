@@ -48,8 +48,6 @@ const movePiece = (startStack, endStack) => {
 	// Your code here
 };
 
-// Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
-
 // Declaring the function isLegal with parameters of startStack and endStack that determine if a move if legal
 const isLegal = (startStack, endStack) => {
 	// if statement that determines if the stack you are moving a piece to is empty. If it is empty,
@@ -68,7 +66,7 @@ const isLegal = (startStack, endStack) => {
 
 // What is a win in Towers of Hanoi? When should this function run?
 
-//Declaring a function that checks for a win
+//Declaring a function that checks for a win.  It should run after each piece is moved.
 const checkForWin = () => {
 	// If statement that determines if the either stack 'b' or stack 'c' have
 	// all four pieces.  If either stack is equal to four, it returns true,
@@ -83,7 +81,8 @@ const checkForWin = () => {
 
 // When is this function called? What should it do with its argument?
 
-// Declaring a function towersOfHanoi with parameters startStack and endStack that starts the puzzle
+// Declaring the game function towersOfHanoi with parameters startStack and endStack that starts the puzzle
+// The argument prompts the user for stack inputs
 const towersOfHanoi = (startStack, endStack) => {
 	// if the isLegal function is true, it will invoke the movePiece function
 	if (isLegal(startStack, endStack)) {

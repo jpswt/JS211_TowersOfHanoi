@@ -50,6 +50,11 @@ const movePiece = (startStack, endStack) => {
 
 // Declaring the function isLegal with parameters of startStack and endStack that determine if a move if legal
 const isLegal = (startStack, endStack) => {
+	// if statement that determines if the starting stack is empty, if it is empty it will return false as you
+	// cannot move a piece that doesn't exist
+	if (stacks[startStack].length === 0) {
+		return false;
+	}
 	// if statement that determines if the stack you are moving a piece to is empty. If it is empty,
 	// it will return true
 	if (stacks[endStack].length === 0) {

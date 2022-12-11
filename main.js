@@ -8,13 +8,13 @@ const rl = readline.createInterface({
 });
 
 // An object that represents the three stacks of Towers of Hanoi; 
-  // * each key is an array of Numbers: 
-    // * A is the far-left, 
-    // * B is the middle, 
-    // * C is the far-right stack
-      // * Each number represents the largest to smallest tokens: 
-        // * 4 is the largest, 
-        // * 1 is the smallest
+// * each key is an array of Numbers: 
+// * A is the far-left, 
+// * B is the middle, 
+// * C is the far-right stack
+// * Each number represents the largest to smallest tokens: 
+// * 4 is the largest, 
+// * 1 is the smallest
 
 let stacks = {
   a: [4, 3, 2, 1],
@@ -30,27 +30,52 @@ const printStacks = () => {
 }
 
 // Next, what do you think this function should do?
-const movePiece = () => {
+const movePiece = (startStack, endStack) => {
   // Your code here
-
+  stacks[endStack].push(stacks[startStack].pop())
 }
 
 // Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
-const isLegal = () => {
+const isLegal = (startStack, endStack) => {
+  //If statement that checks if the endStack is empty.  If true, it returns true.
+  if (stacks[endStack].length === 0) {
+    return true
+  } else
+    //If statement that checks if the piece currently in the endstack is greater than
+    //the piece being moved from the startStack.  If true, it returns false.
+    if (stacks[endStack][stacks[endStack].length - 1] > stacks[startStack][stacks[startStack].length - 1]) {
+      return true
+    }
+    else {
+      //If neither of the two conditions are met, it returns false
+      return false
+    }
   // Your code here
 
 }
 
 // What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
+  if (stacks['b'].length === 4 || stacks['c'].length === 4) {
+    return true
+  } else {
+    return false
+  }
   // Your code here
 
 }
 
 // When is this function called? What should it do with its argument?
 const towersOfHanoi = (startStack, endStack) => {
+  if (isLegal(startStack, endStack)) {
+    movePiece(startStack, endStack)
+    if (checkForWin()) {
+      console.log('You Win!')
+    }
+  } else {
+    console.log('Invalid Move, Please Try Again')
+  }
   // Your code here
-
 }
 
 const getPrompt = () => {

@@ -100,4 +100,5 @@ const reset = () => {
 		startingRow.appendChild(stone2);
 		startingRow.appendChild(stone1);
 	}
+	document.getElementById('announce-game-won').innerHTML = '';
 };
